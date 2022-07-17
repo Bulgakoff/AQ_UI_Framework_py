@@ -1,7 +1,7 @@
 import time
 
 from generator.generator import generated_person
-from locators.locators import TextBoxPageLocators
+from locators.locators import TextBoxPageLocators, CheckBoxPageLocators
 from pages.base_page import BasePage
 
 
@@ -28,3 +28,13 @@ class TextBoxPage(BasePage):
         CREATED_CURRENT_address = self.element_is_present(self.locator.CREATED_CURRENT_ADDRESS).text.split(":")[1]
         CREATED_Permanent_address = self.element_is_present(self.locator.CREATED_Permanent_Address).text.split(":")[1]
         return CREATED_FULL_name, CREATED_email, CREATED_CURRENT_address, CREATED_Permanent_address
+
+
+
+
+
+class CheckBoxPage(BasePage):
+    locator = CheckBoxPageLocators()
+
+    def fill_all_fields(self):
+        pass
