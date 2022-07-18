@@ -2,8 +2,6 @@ from pages.elements_page import CheckBoxPage
 from pages.elements_page import TextBoxPage
 
 
-
-
 class TestElements:
     class TestTextBox:
         def test1(self, driver):
@@ -18,5 +16,7 @@ class TestElements:
             assert permanent_address == output_Permanent_address, "данные permanent_address не равны"
 
         def test_check_box(self, driver):
-            check_box_page = CheckBoxPage(driver,"https://demoqa.com/text-box" )
+            check_box_page = CheckBoxPage(driver, "https://demoqa.com/checkbox")
             check_box_page.open()
+            check_box_page.open_all_fields()
+            check_box_page.click_random_checkbox()

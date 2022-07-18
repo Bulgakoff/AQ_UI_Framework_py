@@ -1,3 +1,4 @@
+import random
 import time
 
 from generator.generator import generated_person
@@ -30,11 +31,22 @@ class TextBoxPage(BasePage):
         return CREATED_FULL_name, CREATED_email, CREATED_CURRENT_address, CREATED_Permanent_address
 
 
-
-
-
 class CheckBoxPage(BasePage):
     locator = CheckBoxPageLocators()
 
-    def fill_all_fields(self):
-        pass
+    def open_all_fields(self):
+        self.element_is_visible(self.locator.EXPAND_ALL_BUTTON).click()
+        # self.element_is_visible(self.locator.EXPAND_ALL_BUTTON)
+
+    def click_random_checkbox(self):
+        item_list = self.element_are_visible(self.locator.ITEM_LIST)
+        count = 21
+        while count != 0:
+            item = item_list[random.randint(1, 15)]
+            if count > 0:
+                self.go_to_element(item)
+                item.click()
+                count -= 1
+                print(item.text)
+            else:
+                break
